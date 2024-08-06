@@ -7,7 +7,49 @@ components:
   properties: {col_widths: '{}'}
   name: content_panel
   layout_properties: {slot: default}
-  components: []
+  components:
+  - name: outlined_1
+    properties: {role: outlined}
+    type: TextBox
+    layout_properties: {grid_position: 'GHLFJF,TWACHC'}
+  - name: outlined_card_1
+    properties: {role: outlined-card}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'JHRGZF,IMJJNH'}
+    components:
+    - name: label_1
+      properties: {text: Feedback Form, role: headline}
+      type: Label
+      layout_properties: {grid_position: 'CSMSVD,PLOIGN'}
+    - name: label_2
+      properties: {text: 'Name:', role: input-prompt}
+      type: Label
+      layout_properties: {grid_position: 'FJWMVZ,MOYHYM'}
+    - name: name_box
+      properties: {}
+      type: TextBox
+      layout_properties: {grid_position: 'FJWMVZ,CXGSCR'}
+    - name: label_3
+      properties: {text: 'Eem:', role: input-prompt}
+      type: Label
+      layout_properties: {grid_position: 'YASUGU,VOCLFO'}
+    - name: eem_box
+      properties: {}
+      type: TextBox
+      layout_properties: {grid_position: 'YASUGU,PYLFXC'}
+    - name: label_4
+      properties: {text: 'Feedback:', role: input-prompt}
+      type: Label
+      layout_properties: {grid_position: 'NILBQM,JZDLTB'}
+    - name: feedback_box
+      properties: {}
+      type: TextBox
+      layout_properties: {grid_position: 'GGBYUU,TKBYVA'}
+    - name: submit_button
+      properties: {text: Submit, role: filled-button}
+      type: Button
+      layout_properties: {grid_position: 'DNZWPZ,HDFBHN'}
+      event_bindings: {click: submit_button_click}
 - type: FlowPanel
   properties: {}
   name: navbar_links

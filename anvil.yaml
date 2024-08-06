@@ -1,6 +1,6 @@
 allow_embedding: false
-package_name: M3_App_1
-name: M3 App 1
+package_name: TestApp
+name: TestApp
 startup_form: Form1
 renamed: true
 runtime_options:
@@ -9,4 +9,64 @@ runtime_options:
   server_version: python3-sandbox
   server_spec: {base: python310-standard}
 dependencies: []
-services: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/anvil/email.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/anvil/users.yml
+  client_config: {allow_signup: true, enable_automatically: true, use_email: true, confirm_email: true, use_google: true}
+  server_config: {user_table: users}
+- source: /runtime/services/google.yml
+  client_config: {}
+  server_config: {}
+uplink_visible: true
+db_schema:
+  feedback:
+    client: none
+    server: full
+    columns:
+    - name: id
+      admin_ui: {order: 0, width: 200}
+      type: number
+    - name: name
+      admin_ui: {order: 1, width: 200}
+      type: string
+    - name: email
+      admin_ui: {width: 200, order: 2}
+      type: string
+    - name: feedback
+      admin_ui: {width: 200, order: 3}
+      type: string
+    - name: timestamp
+      admin_ui: {width: 200, order: 4}
+      type: datetime
+    title: Table 1
+  users:
+    client: none
+    server: full
+    columns:
+    - name: email
+      admin_ui: {order: 0, width: 200}
+      type: string
+    - name: enabled
+      admin_ui: {order: 1, width: 200}
+      type: bool
+    - name: last_login
+      admin_ui: {order: 2, width: 200}
+      type: datetime
+    - name: password_hash
+      admin_ui: {order: 3, width: 200}
+      type: string
+    - name: n_password_failures
+      admin_ui: {order: 4, width: 200}
+      type: number
+    - name: confirmed_email
+      admin_ui: {order: 5, width: 200}
+      type: bool
+    - name: signed_up
+      admin_ui: {order: 6, width: 200}
+      type: datetime
+    title: Users
