@@ -15,9 +15,13 @@ class Form1(Form1Template):
     self.init_components(**properties)
 
     if anvil.users.get_user() is None:
-      anvil.users.login_with_form()
-
-    self.title_label.text = "Logged in as: " + anvil.users.get_user()['email']
+      self.logout.text="Login"
+      self.title_label.text = "Not logged in"
+    else:
+      self.logout.text="Logout"
+      self.title_label.text = "Logged in as: " + anvil.users.get_user()['email']
+      
+    
 
   def submit_button_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -35,7 +39,11 @@ class Form1(Form1Template):
     self.feedback_box.text=""
 
   def logout_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    anvil.users.logout()
+    if anvil.users.get_user() is None:
+      anvil.users.login_with_form()
+    else:
+      anvil.users.logout()
+      
+    open_form('Form1')
 
 

@@ -25,48 +25,58 @@ services:
 uplink_visible: true
 db_schema:
   feedback:
+    title: Table 1
     client: none
     server: full
     columns:
     - name: id
-      admin_ui: {order: 0, width: 200}
+      admin_ui: {width: 200}
       type: number
     - name: name
-      admin_ui: {order: 1, width: 200}
+      admin_ui: {width: 200}
       type: string
     - name: email
-      admin_ui: {width: 200, order: 2}
+      admin_ui: {width: 200}
       type: string
     - name: feedback
-      admin_ui: {width: 200, order: 3}
+      admin_ui: {width: 200}
       type: string
     - name: timestamp
-      admin_ui: {width: 200, order: 4}
+      admin_ui: {width: 200}
       type: datetime
-    title: Table 1
+    - name: logged_in_email
+      admin_ui: {width: 200}
+      type: string
+    - name: logged_in_user
+      admin_ui: {width: 200}
+      type: link_single
+      target: users
   users:
+    title: Users
     client: none
     server: full
     columns:
     - name: email
-      admin_ui: {order: 0, width: 200}
+      admin_ui: {width: 200}
       type: string
     - name: enabled
-      admin_ui: {order: 1, width: 200}
+      admin_ui: {width: 200}
       type: bool
     - name: last_login
-      admin_ui: {order: 2, width: 200}
+      admin_ui: {width: 200}
       type: datetime
     - name: password_hash
-      admin_ui: {order: 3, width: 200}
+      admin_ui: {width: 200}
       type: string
     - name: n_password_failures
-      admin_ui: {order: 4, width: 200}
+      admin_ui: {width: 200}
       type: number
     - name: confirmed_email
-      admin_ui: {order: 5, width: 200}
+      admin_ui: {width: 200}
       type: bool
     - name: signed_up
-      admin_ui: {order: 6, width: 200}
+      admin_ui: {width: 200}
       type: datetime
-    title: Users
+    - name: email_confirmation_key
+      admin_ui: {width: 200}
+      type: string
