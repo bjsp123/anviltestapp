@@ -9,6 +9,17 @@ import anvil.server
 from datetime import datetime
 import random
 
+
+@anvil.server.callable
+def print_my_permissions():
+  super_user = 'hwacha.2@gmail.com'
+  if anvil.users.get_user() is None:
+    print("Nobody is logged in.")
+  elif anvil.users.get_user()['email'] == super_user:
+    print(f"{super_user} is allowed to see this.")
+  else:
+    print("This path is for minimum-access users.")
+
 @anvil.server.callable
 def send_feedback(name, email, feedback):
   # Send yourself an email each time feedback is submitted
@@ -28,6 +39,7 @@ def send_feedback(name, email, feedback):
       id=random.randrange(0,100000),
       name=name, 
       email=email, 
+      logged_in_email=anvil.users.get_user(),
       feedback=feedback, 
       timestamp=datetime.now()
     )

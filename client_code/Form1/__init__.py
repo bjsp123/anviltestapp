@@ -14,7 +14,10 @@ class Form1(Form1Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # Any code you write here will run before the form opens.
+    if anvil.users.get_user() is None:
+      anvil.users.login_with_form()
+
+    self.title_label.text = "Logged in as: " + anvil.users.get_user()['email']
 
   def submit_button_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -30,5 +33,9 @@ class Form1(Form1Template):
     self.name_box.text=""
     self.eem_box.text=""
     self.feedback_box.text=""
+
+  def logout_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    anvil.users.logout()
 
 
