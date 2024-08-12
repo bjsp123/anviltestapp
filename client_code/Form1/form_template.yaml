@@ -57,7 +57,7 @@ components:
     layout_properties: {}
     event_bindings: {click: logout_click}
 - name: title_label
-  properties: {text: 'Logged in as:'}
+  properties: {text: 'Logged in as:', role: body}
   type: Label
   layout_properties: {slot: title}
 - name: column_panel_1
@@ -66,12 +66,12 @@ components:
   layout_properties: {slot: left-nav}
   components:
   - name: link_1
-    properties: {text: View}
+    properties: {text: View, role: null, icon: 'fa:address-book'}
     type: Link
     layout_properties: {grid_position: 'PZYLFZ,EVPYIB'}
     event_bindings: {click: link_1_click}
   - name: link_2
-    properties: {text: Enter}
+    properties: {text: Enter, icon: 'fa:adjust'}
     type: Link
     layout_properties: {grid_position: 'YEYYTZ,GGGDDI'}
     event_bindings: {click: link_2_click}
