@@ -14,5 +14,11 @@ class Form2(Form2Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # Any code you write here will run before the form opens.
-    anvil.users.login_with_form()
+    if anvil.users.get_user() is None:
+      self.logout.text="Login"
+      self.title_label.text = "Not logged in"
+    else:
+      self.logout.text="Logout"
+      self.title_label.text = "Logged in as: " + anvil.users.get_user()['email']
+
+    self.repeating_panel_1.items = app_tables.feedback.search()
