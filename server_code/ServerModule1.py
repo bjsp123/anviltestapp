@@ -23,23 +23,23 @@ def print_my_permissions():
 @anvil.server.callable
 def send_feedback(name, email, feedback):
   # Send yourself an email each time feedback is submitted
-  anvil.email.send(to="hwacha.2@gmail.com", # Change this to your email address!
-                   subject=f"Feedback from {name}",
-                   text=f"""
-                   
-  A new person has filled out the feedback form!
-
-  Name: {name}
-  Email address: {email}
-  Feedback:
-  {feedback}
-  """)
+  #anvil.email.send(to="hwacha.2@gmail.com", # Change this to your email address!
+  #                 subject=f"Feedback from {name}",
+  #                 text=f"""
+  #                 
+  #A new person has filled out the feedback form!
+#
+#  Name: {name}
+#  Email address: {email}
+#  Feedback:
+#  {feedback}
+#  """)
 
   app_tables.feedback.add_row(
       id=random.randrange(0,100000),
       name=name, 
       email=email, 
-      logged_in_email=anvil.users.get_user()['email'],
+      logged_in_email=anvil.users.get_user()['email'] if anvil.users.get_user() else '',
       logged_in_user=anvil.users.get_user(),
       feedback=feedback, 
       timestamp=datetime.now()
