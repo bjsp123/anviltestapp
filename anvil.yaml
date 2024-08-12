@@ -26,7 +26,7 @@ uplink_visible: true
 db_schema:
   feedback:
     title: Table 1
-    client: none
+    client: search
     server: full
     columns:
     - name: id

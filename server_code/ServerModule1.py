@@ -39,7 +39,7 @@ def send_feedback(name, email, feedback):
       id=random.randrange(0,100000),
       name=name, 
       email=email, 
-      logged_in_email=anvil.users.get_user()['email'],
+      logged_in_email=anvil.users.get_user()['email'] if anvil.users.get_user() else '',
       logged_in_user=anvil.users.get_user(),
       feedback=feedback, 
       timestamp=datetime.now()
